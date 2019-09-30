@@ -1,0 +1,31 @@
+version: '3'
+services:
+  db:
+    image: postgres:11.5-alpine
+    volumes:
+      - postgres_data:/var/lib/postgresql/data/
+    environment:
+      - POSTGRES_USER=my_cash
+      - POSTGRES_PASSWORD=my_cash
+      - POSTGRES_DB=my_cash_dev
+  web:
+    build: .
+    command: python manage.py runserver 0.0.0.0:8000
+    volumes:
+      - .:/app
+    ports:
+      - "8000:8000"
+    environment:
+      - DEBUG=1
+      - SECRET_KEY=foo
+      - SQL_ENGINE=django.db.backends.postgresql
+      - SQL_DATABASE=my_cash_dev
+      - SQL_USER=my_cash
+      - SQL_PASSWORD=my_cash
+      - SQL_HOST=db
+      - SQL_PORT=5432
+    depends_on:
+      - db
+
+volumes:
+  postgres_data:
