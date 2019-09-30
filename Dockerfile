@@ -1,5 +1,5 @@
 # pull official base image
-FROM python:3.7.4-alpine
+FROM python:3
 
 
 # set environment variables
@@ -12,7 +12,7 @@ COPY /requirements /requirements
 RUN pip install -r /requirements/base.txt
 
 # copy project
-COPY /app /app
+COPY . /app
 
 # set work directory
 WORKDIR /app
