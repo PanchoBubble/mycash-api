@@ -8,9 +8,10 @@ services:
       - POSTGRES_USER=my_cash
       - POSTGRES_PASSWORD=my_cash
       - POSTGRES_DB=my_cash_dev
-  web:
+  my-cash:
     build: .
     command: python manage.py runserver 0.0.0.0:8000
+    hostname: my-cash
     volumes:
       - .:/app
     ports:
