@@ -129,7 +129,9 @@ DATABASES = {
 
 LOCAL_APPS = (
     'expense',
+    'income',
     'user',
+    'common',
 )
 
 INSTALLED_APPS += LOCAL_APPS

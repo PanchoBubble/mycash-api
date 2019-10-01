@@ -1,4 +1,4 @@
-from django.contrib.auth import get_user_model
+from user.models import User
 
 import graphene
 from graphene_django import DjangoObjectType
@@ -6,12 +6,12 @@ from graphene_django import DjangoObjectType
 
 class UserType(DjangoObjectType):
     class Meta:
-        model = get_user_model()
+        model = User
 
 class Query(graphene.ObjectType):
     users = graphene.List(UserType)
     def resolve_users(self, info):
-        return get_user_model().objects.all()
+        return User.objects.all()
 
 class CreateUser(graphene.Mutation):
     user = graphene.Field(UserType)
@@ -21,7 +21,7 @@ class CreateUser(graphene.Mutation):
         email = graphene.String(required=True)
 
     def mutate(self, info, username, password, email):
-        user = get_user_model()(
+        user = User(
             username=username,
             email=email,
         )
