@@ -2,13 +2,16 @@ import graphene
 import graphql_jwt
 
 import user.schema
+import income.schema
 
 class Query(user.schema.Query,
+            income.schema.Query,
             graphene.ObjectType):
     pass
 
 
 class Mutation( user.schema.Mutation,   
+                income.schema.Mutation,
                 graphene.ObjectType):
     pass
 

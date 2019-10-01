@@ -1,9 +1,11 @@
 import graphene
-from graphene_django import DjangoObjectType, relay
+from graphene_django import DjangoObjectType
+from graphene import relay
+
 from graphene_django.filter import DjangoFilterConnectionField
 from income.models import Income, IncomeType
 
-from user.models import User
+from django.contrib.auth.models import User
 import datetime
 
 class IncomeNode(DjangoObjectType):
