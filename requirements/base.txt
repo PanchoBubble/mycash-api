@@ -5,5 +5,5 @@ graphene==2.1.8
 graphene-django==2.2.0
 graphql-core==2.2.1
 graphql-relay==2.0.0
-django-filter==2.1
+django-filter==2.4.0
 psycopg2==2.8.3
